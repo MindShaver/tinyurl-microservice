@@ -1,36 +1,33 @@
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 3500;
-var mongo = require('mongodb').MongoClient;
-var url = "mongodb://MindShaver:bearbear@ds119718.mlab.com:19718/fcc-db";
-var urlCounter = 0;
+var push = require('./push.js');
+var validUrl = require('is-url');
 
 app.get('/', function(req, res){
     res.end("Hello World");
 });
 
-app.get('/:mini', function(req, res){
-    function mini(){
-        urlCounter++;
-        return +urlCounter;
-    }
-    
-    var jsonOutput = {
-        "origin": req.params.mini,
-        "miniURL": "https://timestamp-mindshaver.c9users.io/" + mini()
-    }
-    
-    mongo.connect(url, function(err, db){
-        if (err) throw err;
+app.get('/:data', function(req, res){
+    if(req.params.data !== "favicon.ico") {
+        var newData = "http://" + req.params.data;
         
-        var collection = db.collection('tinyUrl');
-        collection.insert(jsonOutput, function(err, data) {
-            if(err) throw err;
-            console.log("Added URL");
-            db.close();
-        })
-        res.send(JSON.stringify(jsonOutput), null, 3);
-    })
+        if(validUrl(newData)) {
+            var newSet = {
+            'origin': newData,
+            'tinyUrl': "testUrl"
+            }
+            res.send(JSON.stringify(newSet, null, 3));
+            push(newSet);
+        } else {
+            var badSet = {
+                'origin': "Not a valid URL",
+                'tinyUrl': "No tinyUrl provided"
+            }
+            
+            res.send(JSON.stringify(badSet, null, 3));
+        }
+    }     
 });
 
 app.listen(port, function(){
