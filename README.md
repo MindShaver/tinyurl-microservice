@@ -7,8 +7,7 @@
 <body>
 <div class="container-fluid">
     <h1 class="header">API Basejump: URL Shortener Microservice</h1>
-    <p>By MindShaver |
-        <a href="https://github.com/MindShaver/tinyurl-microservice" target="_blank">Project GitHub</a></p>
+    <p>By MindShaver</p>
         <p> View the live site <a href="https://mindshaver-tinyurl.herokuapp.com/" target="_blank">HERE</a></p>
     <blockquote>User Stories:
         <ol>
