@@ -1,5 +1,5 @@
 var mongo = require('mongodb').MongoClient;
-var url = "mongodb://MindShaver:bearbear@ds119718.mlab.com:19718/fcc-db"
+var url = process.env.MONGOLAB_URI;
 
 module.exports = function(docs) {
     mongo.connect(url, function(err, db) {
