@@ -14,12 +14,20 @@ module.exports = function(docs, cb) {
             if(!result) {
                 console.log("Nope");
                 db.close();
-                cb("Whoopsie");
+                cb({
+                    "origin": "Not a valid URL",
+                    "valid": false,
+                    "tinyUrl": "Not a valid tinyUrl"
+                    });
                 
             } else {
                 console.log("It's here!");
                 db.close();
-                cb(result.origin);
+                cb({
+                    "origin": result.origin,
+                    "valid": true,
+                    "tinyUrl": result.tinyUrl,
+                });
             }
         }) 
     })

@@ -26,7 +26,11 @@ module.exports = function newURL(req, res, next) {
         console.log("This is not a URL :'(")
         find(urlInput, function(results) {
             console.log(results);
-            res.end(results);
+            if(results.valid) {
+                res.redirect(301, "http://" + results.origin);
+            } else {
+                res.end("You didn't enter a valid URL or a valid tinyUrl. \n Please check and try again!");
+            }
         });
         
     };
