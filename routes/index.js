@@ -4,7 +4,7 @@ var router = express.Router();
 var newURL = require('./newURL');
 
 router.get('/', function(req, res, next) {
-    res.send("Hello World");
+    res.sendFile('index.html', {root: __dirname});
 });
 
 router.get('/:data', newURL);

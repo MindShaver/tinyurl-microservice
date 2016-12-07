@@ -19,7 +19,7 @@ module.exports = function newURL(req, res, next) {
         console.log("This is a URL! YAY!");
         console.log(tiny);
         push(dataSet);
-        res.end(JSON.stringify(dataSet), null, 3);
+        res.end(JSON.stringify(dataSet, null, 3));
         
     } else {
         // Check to see if this is a tiny, error.
