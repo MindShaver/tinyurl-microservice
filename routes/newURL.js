@@ -24,8 +24,10 @@ module.exports = function newURL(req, res, next) {
     } else {
         // Check to see if this is a tiny, error.
         console.log("This is not a URL :'(")
-        var foundIt = find(urlInput);
-        console.log(foundIt);
+        find(urlInput, function(results) {
+            console.log(results);
+            res.end(results);
+        });
         
     };
     }

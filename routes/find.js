@@ -1,7 +1,8 @@
 var mongo = require('mongodb').MongoClient;
 var url = "mongodb://MindShaver:bearbear@ds119718.mlab.com:19718/fcc-db"
 
-module.exports = function(docs) {
+module.exports = function(docs, cb) {
+
     mongo.connect(url, function(err, db) {
         if(err) throw err;
 
@@ -12,16 +13,14 @@ module.exports = function(docs) {
             
             if(!result) {
                 console.log("Nope");
-                return("Found nothing here!");
+                db.close();
+                cb("Whoopsie");
                 
             } else {
                 console.log("It's here!");
-                
-                return result.origin;
-               
-                
+                db.close();
+                cb(result.origin);
             }
         }) 
-        db.close();
     })
 }
