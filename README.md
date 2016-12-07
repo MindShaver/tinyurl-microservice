@@ -9,7 +9,7 @@
     <h1 class="header">API Basejump: URL Shortener Microservice</h1>
     <p>By MindShaver |
         <a href="https://github.com/MindShaver/tinyurl-microservice">Project GitHub</a></p>
-        <p> View the live site <a href="https://mindshaver-timestamp-service.herokuapp.com/" target="_blank">HERE</a></p>
+        <p> View the live site <a href="https://mindshaver-tinyurl.herokuapp.com/" target="_blank">HERE</a></p>
     <blockquote>User Stories:
         <ol>
             <li>User Story: I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.
@@ -19,12 +19,12 @@
         </ol>
     </blockquote>
     <h2>Example usage:</h2>
-    <code>mindshaver-timestamp-service.herokuapp.com/1456790400</code><br/>
-    <code>mindshaver-timestamp-service.herokuapp.com/March 1 2016</code>
+    <code>mindshaver-tinyurl.herokuapp.com/www.facebook.com</code><br/>
+    <code>mindshaver-tinyurl.herokuapp.com/aceb211</code>
     <h2>Example output:</h2>
     <code>{<br/>
-   "unix": 1456790400,<br/>
-   "natural": "Tue Mar 01 2016"<br/>
+   "origin": "www.facebook.com",<br/>
+   "tinyUrl": "aceb211"<br/>
 }</code>
     
 </div>
