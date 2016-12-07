@@ -29,7 +29,7 @@ module.exports = function newURL(req, res, next) {
             if(results.valid) {
                 res.redirect(301, "http://" + results.origin);
             } else {
-                res.end("You didn't enter a valid URL or a valid tinyUrl. \n Please check and try again!");
+                res.end(JSON.stringify({"origin": results.origin, "tinyUrl": results.tinyUrl}, null, 3));
             }
         });
         
